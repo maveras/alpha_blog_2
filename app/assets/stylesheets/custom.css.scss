@@ -34,6 +34,18 @@ $navbar-default-bg : #08088A;
     border-radius: 20%;
 }
 
+.article-title{
+    font-weigth: bold;
+    font-size: 1.5em;
+}
+
+.article-body{
+    border-top : 1px solid #eaeaea;
+    padding-top : 15px;
+    padding-bottom : 15px;
+}
+
+
 footer{
     margin-top:45px;
     background-color : #08088A;
