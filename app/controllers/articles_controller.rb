@@ -55,6 +55,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
     
+    #creo un metodo que lo paso al momento de crear el articulo (para hacerla corta)
     def article_params
       params.require(:article).permit(:title, :description)
     end
