@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit,:update,:show,:destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy  ]
+  
+  
   
   def index
     #@articles = Article.all    sin la gema de paginación
@@ -59,5 +63,13 @@ class ArticlesController < ApplicationController
     #creo un metodo que lo paso al momento de crear el articulo (para hacerla corta)
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+    
+    def require_same_user
+      if current_user != @article.user
+        flash[:danger] = "You can only edit or delete your own article"
+        redirect_to root_path
+      end  
+      
     end
 end
